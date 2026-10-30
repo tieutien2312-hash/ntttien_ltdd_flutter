@@ -43,6 +43,29 @@ class CourseService {
     });
   }
 
+  Future<void> updateCourse({
+    required String id,
+    required String code,
+    required String name,
+    required String description,
+    required int credits,
+  }) async {
+    try {
+      await _apiClient.put('/api/courses/$id', data: {
+        'code': code,
+        'name': name,
+        'description': description,
+        'credits': credits,
+      });
+    } catch (_) {}
+  }
+
+  Future<void> deleteCourse(String id) async {
+    try {
+      await _apiClient.delete('/api/courses/$id');
+    } catch (_) {}
+  }
+
   Future<void> enrollStudent(String courseId, String studentId) async {
     await _apiClient.post('/api/courses/$courseId/enroll', data: {'studentId': studentId});
   }

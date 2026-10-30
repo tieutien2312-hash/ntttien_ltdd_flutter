@@ -1,7 +1,8 @@
 class ApiConfig {
   // Base URL deployed on Somee.com
-  static const String baseUrl = 'http://webapibaconca.somee.com';
-  
+   static const String baseUrl = 'http://webapibaconca.somee.com';
+  // Base URL provided by user for testing
+  // static const String baseUrl = 'https://plnznpq1-7292.asse.devtunnels.ms';
   // Connection timeout in milliseconds
   static const int connectTimeout = 30000;
   

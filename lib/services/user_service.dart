@@ -20,6 +20,18 @@ class UserService {
     return StudentModel.fromJson(response);
   }
 
+  Future<void> updateMyStudentProfile({
+    required String fullName,
+    required String className,
+    required String faculty,
+  }) async {
+    await _apiClient.put('/api/students/me', data: {
+      'fullName': fullName,
+      'className': className,
+      'faculty': faculty,
+    });
+  }
+
   Future<List<TeacherModel>> getTeachers() async {
     final response = await _apiClient.get('/api/teachers');
     if (response is List) {

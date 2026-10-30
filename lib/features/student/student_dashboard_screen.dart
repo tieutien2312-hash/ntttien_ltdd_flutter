@@ -76,27 +76,61 @@ class _StudentDashboardScreenState extends State<StudentDashboardScreen> {
                 child: ListView(
                   padding: const EdgeInsets.all(16),
                   children: [
-                    Card(
-                      elevation: 3,
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-                      color: Colors.indigo.shade50,
-                      child: Padding(
-                        padding: const EdgeInsets.all(20.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text('Quét mã QR Điểm Danh', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.indigo)),
-                            const SizedBox(height: 8),
-                            const Text('Sử dụng camera để quét mã QR điểm danh buổi học trực tiếp trên lớp.'),
-                            const SizedBox(height: 16),
-                            ElevatedButton.icon(
-                              onPressed: () => context.push('/student-qr-scanner'),
-                              icon: const Icon(Icons.qr_code_scanner),
-                              label: const Text('Quét QR Ngay'),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Card(
+                            elevation: 3,
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                            color: Colors.indigo.shade50,
+                            child: Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Icon(Icons.qr_code_scanner, color: Colors.indigo, size: 32),
+                                  const SizedBox(height: 8),
+                                  const Text('Quét QR', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.indigo)),
+                                  const SizedBox(height: 4),
+                                  const Text('Điểm danh nhanh', style: TextStyle(fontSize: 12, color: Colors.grey)),
+                                  const SizedBox(height: 12),
+                                  ElevatedButton(
+                                    onPressed: () => context.push('/student-qr-scanner'),
+                                    child: const Text('Quét ngay'),
+                                  ),
+                                ],
+                              ),
                             ),
-                          ],
+                          ),
                         ),
-                      ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: Card(
+                            elevation: 3,
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                            color: Colors.teal.shade50,
+                            child: Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Icon(Icons.my_location, color: Colors.teal, size: 32),
+                                  const SizedBox(height: 8),
+                                  const Text('Vị trí GPS', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.teal)),
+                                  const SizedBox(height: 4),
+                                  const Text('Chia sẻ tọa độ', style: TextStyle(fontSize: 12, color: Colors.grey)),
+                                  const SizedBox(height: 12),
+                                  ElevatedButton(
+                                    style: ElevatedButton.styleFrom(backgroundColor: Colors.teal, foregroundColor: Colors.white),
+                                    onPressed: () => context.push('/student-location'),
+                                    child: const Text('Xem & Chia sẻ'),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                     const SizedBox(height: 24),
                     Text('Môn học đã đăng ký (${courses.length})', style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold)),
@@ -110,9 +144,6 @@ class _StudentDashboardScreenState extends State<StudentDashboardScreen> {
                               title: Text(course.courseName, style: const TextStyle(fontWeight: FontWeight.bold)),
                               subtitle: Text('Mã môn: ${course.courseCode} ${course.teacherName != null ? "• GV: ${course.teacherName}" : ""}'),
                               trailing: const Icon(Icons.arrow_forward_ios, size: 16),
-                              onTap: () {
-                                // Course details
-                              },
                             ),
                           )),
                   ],

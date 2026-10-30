@@ -11,6 +11,7 @@ import '../../features/teacher/qr_session_screen.dart';
 import '../../features/teacher/noise_measurement_screen.dart';
 import '../../features/student/student_dashboard_screen.dart';
 import '../../features/student/qr_scanner_screen.dart';
+import '../../features/student/student_location_screen.dart';
 import '../../features/notifications/notifications_screen.dart';
 import '../storage/token_storage.dart';
 
@@ -79,6 +80,10 @@ class AppRouter {
       GoRoute(
         path: '/student-qr-scanner',
         builder: (context, state) => const QrScannerScreen(),
+      ),
+      GoRoute(
+        path: '/student-location',
+        builder: (context, state) => const StudentLocationScreen(),
       ),
       GoRoute(
         path: '/notifications',
